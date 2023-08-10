@@ -53,7 +53,7 @@ const linkedList = () =>  {
             current = current.next;
             size++;
         }
-        console.log(size);
+        console.log(`Size of list: ${size}`);
         return size;
 
     };
@@ -75,7 +75,7 @@ const linkedList = () =>  {
             current = current.next;
         }
         if (current.next === null) {
-            console.log(current.value)
+            console.log(`Head: ${current.value}`)
             return current;
         }
     };
@@ -91,7 +91,7 @@ const linkedList = () =>  {
             current = current.next;
             size++;
             if(size === index) {
-                console.log(current.value)
+                console.log(`Node at given index: ${current.value}`)
                 return current;
             }
         }
@@ -116,7 +116,8 @@ const linkedList = () =>  {
 
     const contains = (val) => {
         // check if linkedList contains given node
-        if (list.head === null) return;
+        if (list.head === null) 
+            return;
         
         let current = list.head;
 
@@ -133,6 +134,18 @@ const linkedList = () =>  {
 
     const find = (val) => {
         // return the index of the node containing given value || null
+        if (list.head === null) 
+            return;
+        let current = list.head;
+        let index = 0;
+        while(current.next !== null) {
+            index++;
+            current = current.next;
+            if(current.value === val) {
+                console.log(`${val} found at index ${index}`)
+                return current;
+            }
+        }
     }
 
     const toString = () => {
@@ -154,6 +167,44 @@ const linkedList = () =>  {
         return string;
     }
 
+    //Extra credit:
+
+    const insertAt = (value, index) =>  {
+        if(list.head === null)
+        return;
+    
+        const newNode = createNode(value);
+
+        let current = list.head;
+        let currentIndex = 0;
+        let givenIndex = index;
+
+        while(current.next !== null) {
+            if(index === 0) {
+                newNode.next = list.head;
+                list.head = newNode;
+                return;
+            }
+            if(currentIndex === givenIndex-1){
+                newNode.next = current.next;
+                current.next = newNode;
+                return;
+            }
+            current = current.next;
+            currentIndex++;
+
+        }
+        if(current.next === null) {
+            current.next = newNode;
+        }
+
+        return list;
+    }
+
+    const removeAt = (index) => {
+
+    }
+
     return {
         list,
         append: (value) => append(list, value),
@@ -165,7 +216,8 @@ const linkedList = () =>  {
         pop,
         contains,
         find,
-        toString
+        toString,
+        insertAt
     };
 };
 
@@ -183,4 +235,6 @@ listOne.tail()
 listOne.nodeAt(3)
 listOne.pop()
 listOne.contains(2)
+listOne.find(2);
+listOne.insertAt(10, 4)
 listOne.toString()
