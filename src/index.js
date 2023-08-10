@@ -2,7 +2,7 @@ const linkedList = () =>  {
     //linkedlist factory function
     const list = {
      head: null
-    }
+    };
 
     const createNode = (value) => {
       return {
@@ -40,12 +40,11 @@ const linkedList = () =>  {
             list.head = newNode;
 
             return list;
-        }
+    };
 
     const size = ()  => {
         // return number of nodes in list
-        if (list.head === null)
-            return;
+        if (list.head === null) return;
 
         let size = 1;
         let current = list.head;
@@ -57,39 +56,91 @@ const linkedList = () =>  {
         console.log(size);
         return size;
 
+    };
+
+    const head = () => {
+        // return the head node (first node)
+    if (list.head === null) return;
+    else 
+        return list.head;
+    };
+
+    const tail = () => {
+        // return the tail node (last node)
+        if (list.head === null) return;
+
+        let current = list.head;
+
+        while (current.next !== null) {
+            current = current.next;
+        }
+        if (current.next === null) {
+            console.log(current.value)
+            return current;
+        }
+    };
+
+    const nodeAt = (index) => {
+        // return the node at given index
+        if (list.head === null) return;
+
+        let size = 1;
+        let current = list.head;
+
+        while(current.next !== null) {
+            current = current.next;
+            size++;
+            if(size === index) {
+                console.log(current.value)
+                return current;
+            }
+        }
+    };
+
+    const pop = () => {
+        // remove the last node of the list
+        if (list.head === null) return;
+
+        let index = 1;
+        let current = list.head;
+
+        while(current.next !== null) {
+            current = current.next;
+           if(current.next.next === null) {
+            current.next = null;
+           }
+        }
+        
+        return list;
     }
 
-    // const head = () => {
-    //     // return the head node (first node)
-    // }
+    const contains = (val) => {
+        // check if linkedList contains given node
+        if (list.head === null) return;
+        
+        let current = list.head;
 
-    // const tail = () => {
-    //     // return the tail node (last node)
-    // }
+        while(current.next !== null){
+    
+            current = current.next;
+            if (current.value === val) {
+                console.log(`Yes, the list contains ${val}`)
+                return current;
+            }
+        }
 
-    // const nodeAt = (index) => {
-    //     // return the node at given index
-    // }
+    }
 
-    // const pop = () => {
-    //     // remove the last node of the list
-    // }
-
-    // const contains = (val) => {
-    //     // check if linkedList contains given node
-    // }
-
-    // const find = (val) => {
-    //     // return the index of the node containing given value || null
-    // }
+    const find = (val) => {
+        // return the index of the node containing given value || null
+    }
 
     const toString = () => {
-        if (list.head === null) 
-            return;
-        
         // print linkedList objects as a string 
         //(val) -> (val) -> (val) -> null
-
+        if (list.head === null) 
+        return;
+    
         let string = '';
         let current = list.head;
 
@@ -108,22 +159,28 @@ const linkedList = () =>  {
         append: (value) => append(list, value),
         prepend: (value) => prepend(list, value),
         size,
-        // head,
-        // tail,
-        // nodeAt,
-        // pop,
-        // contains,
-        // find,
+        head,
+        tail,
+        nodeAt,
+        pop,
+        contains,
+        find,
         toString
     };
 };
 
 const listOne = linkedList();
-listOne.append(20);
-listOne.append(60);
-listOne.append(90);
-listOne.append(20);
+listOne.append(2);
+listOne.append(3);
+listOne.append(4);
+listOne.append(5);
 listOne.prepend(1);
 
 listOne.size()
+listOne.toString()
+listOne.head();
+listOne.tail()
+listOne.nodeAt(3)
+listOne.pop()
+listOne.contains(2)
 listOne.toString()
