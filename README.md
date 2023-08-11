@@ -4,22 +4,22 @@ Linked list project for The Odin Project.
 
 ## LinkedList factory function with the methods to
 
-### - Append nodes
+- Append nodes
 
-### - Prepend nodes
+- Prepend nodes
 
-### - Print list
+- Print list
 
-### - Count size
+- Count size
 
-### - Find head of list
+- Find head of list
 
-### - Find tail of list
+- Find tail of list
 
-### - Pop node from end of list
+- Pop node from end of list
 
-### - Check if list contains given value
+- Check if list contains given value
 
-### - find index of given value
+- find index of given value
 
-### - Insert node at given index
+- Insert node at given index
